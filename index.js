@@ -115,7 +115,7 @@ app.use((error, req, res, next) => {
     return next(error);
   }
 
-  res.status(error.code || 500).json({ message: error.message || "An unknown error occurred" });
+  return res.status(error.code || 500).json({ message: error.message || "An unknown error occurred" });
 });
 
 const port = process.env.PORT || 5000;

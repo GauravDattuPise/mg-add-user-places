@@ -20,7 +20,7 @@ app.use(cors({
 }));
 
 // connecting to mongodb
-mongoose.connect(process.env.DB_URL) 
+mongoose.connect("mongodb+srv://gauravpise87:Gaurav2001@gauravdb.crgpvot.mongodb.net/add-user-places") 
     .then(() => console.log("DB is connected"))
     .catch((err) => console.log("error in connection", err));
 

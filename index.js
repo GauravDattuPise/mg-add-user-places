@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const multer = require("multer")
 const path = require("path")
 // const dotenv = require("dotenv");
-const HttpError = require("./model/httpError");
+const HttpError = require("./src/model/httpError");
 // dotenv.config();
 
 
@@ -25,20 +25,17 @@ mongoose.connect(process.env.DB_URL)
     .catch((err) => console.log("error in connection", err));
 
 // user routes
-app.use("/user", require("./route/userRoute"))
+app.use("/user", require("./src/route/userRoute"))
 
 // place routes
-app.use("/place", require("./route/placeRoute"))
+app.use("/place", require("./src/route/placeRoute"))
 
-app.use(express.static(path.join(__dirname, "../../client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../../client/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  )
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
 });
+ 
 
 // route not found
 app.use((err,req,res)=>{

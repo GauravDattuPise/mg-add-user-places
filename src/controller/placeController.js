@@ -28,9 +28,8 @@ exports.addPlace = async (req, res, next) => {
         if (!address) {
             return next(new HttpError("address is required", 400))
         }
-
        
-         placeData.userId = req.userData.userId
+        placeData.userId = req.userData.userId
         const createdPlace = await placeModel.create(placeData);
         return res.status(201).send({ status: true, message: "place created Successfully", place: createdPlace })
 

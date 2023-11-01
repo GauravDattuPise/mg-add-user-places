@@ -13,6 +13,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : false}))
 
+// take request from any origin
+app.use(cors({ origin: '*' }));
+
+
 app.use(cors({
     origin: "*",
     methods: ["GET", "POST", "PATCH", "DELETE"],
